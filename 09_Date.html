@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <script>
+      let parags = document.querySelectorAll('p');
+      let i = 0;
+
+      let date = new Date();
+      parags[i++].innerHTML = 'date = ' + date;
+
+      parags[i++].innerHTML = 'date = ' + Number(date);
+
+      date = new Date('1970-01-01');
+      parags[i++].innerHTML = 'date = ' + date;
+
+      parags[i++].innerHTML = 'date = ' + Number(date);
+
+      /*
+        new Date(year: number, month: number, date?: number, 
+                hours?: number, minutes?: number, seconds?: number, ms?: number)
+        month => zero base => 0 .. 11
+      */
+      date = new Date(2000, 10, 5);
+      parags[i++].innerHTML = 'date = ' + date;
+
+      date = new Date(2000, 10, 5, 18, 20, 20, 20);
+      parags[i++].innerHTML = 'date = ' + date;
+
+      date = new Date();
+
+      parags[i++].innerHTML = 'date.getFullYear() = ' + date.getFullYear();
+      parags[i++].innerHTML = 'date.getMonth() = ' + date.getMonth(); // => zero base
+      parags[i++].innerHTML = 'date.getDate() = ' + date.getDate();
+      parags[i++].innerHTML = 'date.getDay() = ' + date.getDay();  // 0 .. 6 => sunday ... saturday
+      parags[i++].innerHTML = 'date.toString() = ' + date.toString();
+      parags[i++].innerHTML = 'date.toDateString() = ' + date.toDateString();
+      parags[i++].innerHTML = 'date.toISOString() = ' + date.toISOString();
+      parags[i++].innerHTML = 'date.toTimeString() = ' + date.toTimeString();
+      parags[i++].innerHTML = 'date.toLocaleDateString("fa") = ' + date.toLocaleDateString('fa');
+      parags[i++].innerHTML = 'date.toLocaleTimeString("fa") = ' + date.toLocaleTimeString('fa');
+      let newDate = Number(date) + (1000 * 60 * 60 * 24) * 13
+      parags[i++].innerHTML = ' = ' + newDate;
+      parags[i++].innerHTML = ' = ' + (new Date(newDate)).toLocaleDateString('fa');
+
+    </script>
+  </body>
+</html>
