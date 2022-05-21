@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn1">Back</button>
+    <button id="btn2">Forward</button>
+    <button id="btn2-1">Go</button>
+    <button id="btn3">Reload</button>
+    <button id="btn4">Pathname</button>
+    <button id="btn4-1">MFT Web Site</button>
+    <button id="btn5">New Tab</button>
+    <button id="btn6">New Window</button>
+    <button id="btn7">Stop</button>
+    <button id="btn8">Interval</button>
+
+    <p id="p1"></p>
+    <script>
+      console.log(window);
+
+      // window.alert('Message')
+      // alert('Message')
+
+      console.log(history);
+      console.log(location);
+
+
+      // ابعاد ویوپورت
+      console.log(`window.innerWidth = ${window.innerWidth}`)
+      console.log(`window.innerHeight = ${window.innerHeight}`)
+
+      // ابعاد بروزر
+      console.log(`window.outerWidth = ${window.outerWidth}`)
+      console.log(`window.outerHeight = ${window.outerHeight}`)
+
+      // ابعاد صفحه نمایش
+      console.log(`screen.width = ${screen.width}`)
+      console.log(`screen.height = ${screen.height}`)
+      console.log(`screen.availWidth = ${screen.availWidth}`)
+      console.log(`screen.availHeight = ${screen.availHeight}`)
+
+      document.getElementById('btn1').onclick = function () {
+        history.back();
+      };
+      document.getElementById('btn2').onclick = function () {
+        history.forward();
+      };
+      document.getElementById('btn2-1').onclick = function () {
+        /*
+          delta => negative => back
+          delta => positive => forward
+        */
+        history.go(-1); 
+      };
+      document.getElementById('btn3').onclick = function () {
+        location.reload();
+      };
+      document.getElementById('btn4').onclick = function () {
+        location.pathname = '/04_Array_Iteration.html';
+      };
+      document.getElementById('btn4-1').onclick = function () {
+        location.href = 'https://www.mftplus.com/';
+      };
+      document.getElementById('btn5').onclick = function () {
+        // window.open('https://www.mftplus.com/')
+        open('https://www.mftplus.com/');
+      };
+      
+      let timeout;
+
+      document.getElementById('btn6').onclick = function () {
+        let myWindow = window.open(
+          '',
+          '',
+          'width=400,height=400,left=500,top=300,titlebar=0'
+        );
+        
+        // console.log(myWindow.outerHeight)
+        setTimeout(function(){
+          let screenWidth = screen.width;
+          let screenHeight = screen.height;
+          myWindow.moveTo(screenWidth - myWindow.outerWidth, screenHeight - myWindow.outerHeight)
+
+        }, 2000)
+        
+        timeout = setTimeout(function() {
+          myWindow.close()
+        }, 5000);
+      };
+      let isShowAd = false;
+      document.onclick = function () {
+        if (!isShowAd) {
+          //....
+          window.open(
+            'https://www.mftplus.com/',
+            '',
+            'width=300,height=200,left=900,top=500,titlebar=0'
+          );
+          isShowAd = true;
+        }
+        // alert('sd')
+      };
+      document.getElementById('btn7').onclick = function() {
+        clearTimeout(timeout)
+      }
+
+      let counter = 1
+      let p1 = document.getElementById('p1')
+
+      p1.innerHTML = `counter = ${counter}`
+      document.getElementById('btn8').onclick = function(){
+        counter = 1
+        p1.innerHTML = `counter = ${counter}`
+        
+        let interval = setInterval(function(){
+          counter++
+          p1.innerHTML = `counter = ${counter}`
+
+          if(counter === 5){
+            clearInterval(interval)
+          }
+        }, 2000)
+      }
+    </script>
+  </body>
+</html>
