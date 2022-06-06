@@ -1,3 +1,0 @@
-
-  <h1>AJAX - The XMLHttpRequest Object</h1>
-    
