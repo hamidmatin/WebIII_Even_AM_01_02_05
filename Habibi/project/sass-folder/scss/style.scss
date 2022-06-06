@@ -1,0 +1,96 @@
+
+@import "1_my-variables";
+@import "2_vazir-font";
+
+@import "../../lib/bootstrap/scss/bootstrap.scss";
+
+
+.top-brand{
+    margin-left: 25px;
+}
+
+
+.p-left{
+    padding-left: 15px !important; 
+    padding-right: 15px !important;
+    transition: all 200ms !important;
+    border-bottom: solid 2px #fff;
+    &:hover{
+        color: rgb(88, 88, 194) !important;
+        border-bottom: solid rgb(88, 88, 194) 2px !important;
+    }
+
+    &.p-top{
+        padding-top: 20px;
+    }
+
+}
+
+.rounded-pill {
+    border-radius: 5rem !important;
+  }
+
+
+  .bg-main2{
+      background-color: rgba(232, 227, 227, 0.408) !important;
+  }
+
+
+  .border-main2{
+
+    border: double 6px #fff;
+    transition: all 200ms;
+
+    &:hover{border: double 6px rgb(88, 88, 194) !important;}
+
+
+}
+
+
+.p-top2{
+    padding-top: 20px;
+}
+
+.font-vazir{
+    font-family: vazir;
+}
+
+
+
+.main-shadow{
+    transition: all 200ms !important;
+
+    box-shadow: 6px 6px 10px gray !important;
+    
+}
+
+.scale-card{
+    transition: all 300ms;
+
+    &:hover{
+
+        transform: scale(1.03);
+    }
+}
+
+
+.button-me{
+    padding: 6px 9px;
+    color: blue;
+    background-color: white;
+    border-color: blue;
+    transition: all 200ms;
+    border-radius: 7px;
+}    
+
+
+.button-me:hover{
+    color: white;
+    background-color: blue;
+}
+
+
+.active-button-me{
+    color: white !important; 
+    background-color: blue !important; 
+}
