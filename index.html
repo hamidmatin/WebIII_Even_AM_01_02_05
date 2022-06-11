@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="pageination"></div>
+    <button id="btn-search">Search</button>
+    <script>
+      let allData = [];
+      let showData = [];
+      let itemsPerPage = 15;
+      let totalPage = 0;
+      let currentPage = 0;
+      /*********************/
+        document.getElementById('btn-search').onclick = function(){
+            searchData('pariatur')
+        }
+      /***************/
+
+      const searchData = function(serachValue){
+        const finded = allData.filter(function(item){
+            return item.title.includes(serachValue)
+        })
+        console.log('-----------------')
+        console.log(finded)
+        showData = finded;
+        createPagination()
+        gotoPage(1)
+      }
+
+      const showCard = function (list) {
+        list.forEach(function (item) {
+          console.log(item);
+        });
+      };
+      const gotoPage = function (pageNo) {
+        currentPage = pageNo;
+        let startIndex = (pageNo - 1) * itemsPerPage;
+        let endIndex = pageNo * itemsPerPage;
+
+        const listInPage = showData.slice(startIndex, endIndex);
+        showCard(listInPage);
+      };
+
+      const createPagination = function () {
+        totalPage = Math.ceil(showData.length / itemsPerPage);
+        const paginationContainer = document.querySelector('.pageination');
+        paginationContainer.innerHTML = '';
+
+        for (let pageNo = 1; pageNo <= totalPage; pageNo++) {
+          const pageButton = `<button onclick="gotoPage(${pageNo})">${pageNo}</button>`;
+          paginationContainer.innerHTML += pageButton;
+        }
+      };
+
+      const loadData = function () {
+        const xhttp = new XMLHttpRequest();
+        xhttp.open('get', 'https://jsonplaceholder.typicode.com/albums', true);
+        xhttp.send();
+        xhttp.onload = function () {
+          allData = JSON.parse(this.responseText);
+          showData = Object.assign(showData, allData);
+          createPagination();
+          gotoPage(1);
+        };
+      };
+
+      loadData();
+    </script>
+  </body>
+</html>
